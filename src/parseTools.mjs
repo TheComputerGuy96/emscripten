@@ -474,9 +474,6 @@ function makeGetValue(ptr, pos, type) {
 
   const slab = getHeapForType(type);
   let ret = `${slab}[${getHeapOffset(offset, type)}]`;
-  if (MEMORY64 && isPointerType(type)) {
-    ret = `Number(${ret})`;
-  }
   return ret;
 }
 
