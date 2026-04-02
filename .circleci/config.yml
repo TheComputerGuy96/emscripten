@@ -567,13 +567,9 @@ jobs:
           test_targets: "sanity"
   build-linux:
     executor: ubuntu-lts
-    # xlarge has 4x the cores of the default medium, costs 4x as much, and runs
-    # in about 1/2 the time, so it is not cost-effective (overall it is 2x the
-    # cost for the same work), but given this blocks almost all the other jobs
-    # we want it to finish asap
-    resource_class: xlarge
+    resource_class: large
     environment:
-      EMCC_CORES: 16
+      EMCC_CORES: 8
       EMCC_USE_NINJA: 1
       EM_COMPILER_WRAPPER: "ccache"
     steps:
